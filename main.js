@@ -130,3 +130,50 @@ for(let i = 0; i < navigationLinks.length; i++) {
         }
     });
 }
+
+  const projectItems = document.querySelectorAll(".project-item a");
+  const modal = document.getElementById("projectModal");
+  const modalCategory = document.getElementById("modalCategory");
+  const modalDescription = document.getElementById("modalDescription");
+  const modalImage = document.getElementById("modalImage");
+  const closeModal = document.querySelector(".close-modal");
+
+  const projectDescriptions = {
+  "Gestion de budget": "Application web collaborative de suivi des dépenses personnelles, développée en équipe. Le projet permet aux utilisateurs de créer un budget, d’ajouter des revenus et des dépenses, de catégoriser leurs transactions, et de visualiser des bilans financiers via des tableaux et des graphiques dynamiques. Côté front-end, nous avons utilisé HTML5, CSS3, JavaScript et Chart.js pour l’affichage interactif des données. Côté back-end, nous avons utilisé Firebase pour la gestion des utilisateurs, le stockage en temps réel et l’authentification. En tant que membre actif de l’équipe, j’ai participé à la modélisation des données, à la conception des interfaces (UX/UI), à l’intégration des composants dynamiques, à la gestion des routes, et à l'interfaçage avec la base de données. En gestion de projet, nous avons adopté une méthode agile SCRUM : planification par sprints, gestion du backlog, réunions quotidiennes, répartition claire des rôles, et outils de suivi (Trello, Git). Ce projet m’a permis de développer des compétences solides en : analyse fonctionnelle, conception de base de données, architecture front/back, collaboration en équipe technique, communication, gestion des versions (Git/GitHub), et gestion des délais de production dans un environnement réel.",
+
+  "Site vitrine pour une creche": "Site vitrine responsive conçu en groupe pour une crèche fictive, avec l’objectif de proposer une expérience utilisateur rassurante et professionnelle pour des parents. Le site présente les valeurs pédagogiques de la structure, son équipe, des photos, des témoignages et un formulaire de contact. Côté front-end, nous avons travaillé avec HTML, CSS (avec Flexbox et Grid pour la mise en page), JavaScript pour les interactions (menu, formulaire dynamique), et un travail approfondi sur l’accessibilité et le responsive design. Nous avons aussi intégré les bonnes pratiques SEO (structure sémantique, balises meta, performance de chargement). J’ai contribué au développement de plusieurs sections du site, à la validation W3C, et à l’intégration de composants graphiques. Côté gestion de projet, nous avons organisé le travail par livrables, rédigé un cahier des charges, réalisé des maquettes (Figma), et assuré un suivi régulier de l’avancement. J’ai également joué un rôle de coordinateur technique : organisation des tâches, contrôle qualité, communication avec les autres pôles (contenu, design). Ce projet m’a permis d'approfondir mes compétences en : design UX, intégration responsive, travail d’équipe pluridisciplinaire, planification, et conduite de projet collaboratif avec des outils professionnels (Git, Figma, Google Drive, Trello).",
+
+  "Site Web professionnel": "Site web réalisé pour un client réel dans le domaine du développement informatique. Il s’agissait de concevoir une landing page professionnelle mettant en avant son profil technique, ses projets, ses services, son portfolio, et ses coordonnées. Ce projet a exigé un haut niveau de rigueur tant sur le plan du code que de l’image de marque. J’ai géré l’ensemble du projet de manière autonome : recueil des besoins client, définition des objectifs du site, rédaction des spécifications, création des maquettes (Figma), choix de la typographie, des couleurs et du style graphique. Le front-end a été développé en HTML5, CSS3 (avec Tailwind CSS), JavaScript natif (et animations), avec une attention particulière portée au responsive, à l’accessibilité, à la compatibilité cross-navigateur, et à l’optimisation SEO. Le site a été déployé en ligne avec nom de domaine et configuration du serveur. J’ai également assuré le suivi post-livraison, avec des tests utilisateurs et des ajustements techniques. Ce projet m’a permis de démontrer des compétences complètes en : relation client, conception d’interfaces modernes, intégration web professionnelle, optimisation technique (performance, SEO), gestion du temps et des priorités, déploiement et maintenance, tout en répondant aux attentes d’un professionnel du secteur."
+};
+
+
+
+
+
+  projectItems.forEach(item => {
+    item.addEventListener("click", e => {
+      e.preventDefault();
+      const project = item.closest(".project-item");
+      const title = project.querySelector(".project-title").textContent;
+      const category = project.querySelector(".project-category").textContent;
+      const imgSrc = project.querySelector("img").src;
+
+      modalTitle.textContent = title;
+      modalCategory.textContent = category;
+      modalDescription.textContent = projectDescriptions[title] || "Description non disponible.";
+      modalImage.src = imgSrc;
+      modalImage.alt = title;
+
+      modal.style.display = "block";
+    });
+  });
+
+  closeModal.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = e => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  };
