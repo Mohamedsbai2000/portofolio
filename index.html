@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Mohamed Sbai - Data Analyst</title>
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
     <link rel="shortcut icon" href="https://i.postimg.cc/9fqYVvxh/logo.png" type="image/x-icon">
     <script>try{var t=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 </head>
@@ -13,7 +13,7 @@
         <aside class="sidebar " data-sidebar>
             <div class="sidebar-info">
                 <figure class="avatar-box">
-  <img src="prof.jpg?v=3" alt="Photo de Mohamed Sbai" class="avatar">
+  <img src="1764687106940.jpg" alt="Photo de Mohamed Sbai" class="avatar">
 </figure>
 
 
@@ -22,7 +22,7 @@
                     <p class="title">Data Analyst</p>
                 </div>
 
-                <button class="info-more-btn" data-sidebar-btn>     
+                <button class="info-more-btn" data-sidebar-btn>
                     <span>Show Contacts</span>
                     <ion-icon name="chevron-down"></ion-icon>
                 </button>
@@ -43,6 +43,14 @@
                             <a href="mailto:sbai.kriat.mohamed@gmail.com" class="contact-link">sbai.kriat.mohamed@gmail.com</a>
                         </div>
                     </li>
+
+                    <li class="contact-item">
+                            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+                            <div class="contact-info">
+                                <p class="contact-title">Téléphone</p>
+                                <a href="tel:+33788614352" class="contact-link">07 88 61 43 52</a>
+                            </div>
+                        </li>
 
                     <li class="contact-item">
                         <div class="icon-box">
@@ -371,8 +379,6 @@ Je maîtrise l'ensemble du cycle de la donnée : de l'extraction (SQL, Web Scrap
                 </a>
             </li>
 
-    
-
             <li class="project-item active" data-filter-item data-category="power bi">
                 <a href="#" class="project-link-trigger">
                     <figure class="project-img">
@@ -383,8 +389,6 @@ Je maîtrise l'ensemble du cycle de la donnée : de l'extraction (SQL, Web Scrap
                     <p class="project-category">Power BI</p>
                 </a>
             </li>
-
-    
 
             
             <li class="project-item active" data-filter-item data-category="python">
@@ -480,21 +484,48 @@ Je maîtrise l'ensemble du cycle de la donnée : de l'extraction (SQL, Web Scrap
                                     </figure>
                 </section>
 
+                <section class="contact-coordonnees">
+                    <h3 class="h3 form-title">Mes coordonnées</h3>
+                    <ul class="contacts-list" style="margin-bottom: 30px;">
+                        <li class="contact-item">
+                            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+                            <div class="contact-info">
+                                <p class="contact-title">Email</p>
+                                <a href="mailto:sbai.kriat.mohamed@gmail.com" class="contact-link">sbai.kriat.mohamed@gmail.com</a>
+                            </div>
+                        </li>
+                        <li class="contact-item">
+                            <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
+                            <div class="contact-info">
+                                <p class="contact-title">Téléphone</p>
+                                <a href="tel:+33788614352" class="contact-link">07 88 61 43 52</a>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
                 <section class="contact-form">
                     <h3 class="h3 form-title">Contact</h3>
 
-                    <form action="#" class="form" data-form>
+                    <form action="https://api.web3forms.com/submit" method="POST" class="form" data-form>
+                        <input type="hidden" name="access_key" value="fce3c353-d063-4fdc-a8f3-2a23d7dc6b5e">
+                        <input type="hidden" name="subject" value="Nouveau message depuis votre portfolio">
+                        <input type="hidden" name="from_name" value="Portfolio Mohamed Sbai">
+                        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+
                         <div class="input-wrapper">
-                            <input type="text" name="fullname" class="form-input" placeholder="Nom et prenom" required data-form-input>
+                            <input type="text" name="name" class="form-input" placeholder="Nom et prénom" required data-form-input>
                             <input type="email" name="email" class="form-input" placeholder="Email" required data-form-input>
                         </div>
 
-                        <textarea name="message" class="form-input" placeholder="Message" required data-form-input=""></textarea>
+                        <textarea name="message" class="form-input" placeholder="Message" required data-form-input></textarea>
 
                         <button class="form-btn" type="submit" disabled data-form-btn>
                             <ion-icon name="paper-plane"></ion-icon>
                             <span>Envoyer</span>
                         </button>
+
+                        <p id="formStatus" style="margin-top: 12px; font-size: 14px;"></p>
                     </form>
                 </section>
             </article>
@@ -522,7 +553,7 @@ Je maîtrise l'ensemble du cycle de la donnée : de l'extraction (SQL, Web Scrap
     </main>
  
 
-    <script src="main.js?v=3"></script>
+    <script src="main.js?v=4"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

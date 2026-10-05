@@ -148,11 +148,7 @@ for(let i = 0; i < navigationLinks.length; i++) {
 
     "Suivi des Prios (Power BI)": "Suivi des priorités marketing : objectifs, commandes et quantités par titre, taux de prospection et alertes automatiques (campagne en cours, décrochage, dépassement possible). Réalisé en contexte professionnel, données anonymisées.",
 
-    "Suivi Fnac (Power BI)": "Analyse des commandes par magasin et par titre, répartition des quantités par tranche et poids de chaque magasin. Réalisé en contexte professionnel, données anonymisées.",
-
     "Suivi des Catalogues (Power BI)": "Suivi de la participation et des commandes par titre et par client, calcul du reste à faire et visualisation géographique des clients. Réalisé en contexte professionnel, données anonymisées.",
-
-    "Commandes Non-Servies (Power BI)": "Rapport de détail des commandes non servies par client et par article, pour identifier les lignes à supprimer et fiabiliser le suivi. Réalisé en contexte professionnel, données anonymisées.",
 
     "Amazon Web Scraper Project (Python)": "Développement d'un Web Scraping en Python (BeautifulSoup, Requests) pour extraire en temps réel le titre et le prix d'un produit spécifique sur Amazon. Le projet inclut l'automatisation des requêtes, le stockage historique des données dans un fichier CSV, et peut être étendu pour l'envoi d'alertes par email en cas de baisse de prix.",
     
@@ -214,4 +210,49 @@ for(let i = 0; i < navigationLinks.length; i++) {
   };
   apply(root.getAttribute("data-theme") || "light");
   btn.addEventListener("click", () => apply(root.getAttribute("data-theme") === "light" ? "dark" : "light"));
+})();
+
+
+// Envoi du formulaire de contact (Web3Forms)
+(function () {
+  const f = document.querySelector("[data-form]");
+  const status = document.getElementById("formStatus");
+  const btn = document.querySelector("[data-form-btn]");
+  if (!f) return;
+  f.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    btn.setAttribute("disabled", "");
+    status.textContent = "Envoi en cours...";
+    try {
+      const res = await fetch(f.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(f)
+      });
+      const data = await res.json();
+      if (data.success) {
+        status.textContent = "Message envoyé, merci ! Je vous réponds rapidement.";
+        f.reset();
+      } else {
+        status.textContent = "Erreur : " + (data.message || "réessayez plus tard.");
+        btn.removeAttribute("disabled");
+      }
+    } catch (err) {
+      status.textContent = "Erreur réseau. Écrivez-moi directement par e-mail.";
+      btn.removeAttribute("disabled");
+    }
+  });
+})();
+
+// Activation fiable du bouton Envoyer (saisie, remplissage automatique, collage)
+(function () {
+  const f = document.querySelector("[data-form]");
+  const b = document.querySelector("[data-form-btn]");
+  if (!f || !b) return;
+  const check = () => {
+    if (f.checkValidity()) b.removeAttribute("disabled");
+    else b.setAttribute("disabled", "");
+  };
+  ["input", "change", "keyup", "blur"].forEach((ev) => f.addEventListener(ev, check, true));
+  setTimeout(check, 500);
 })();
