@@ -177,7 +177,7 @@ main {
     padding: 15px;
 }
 
-    .sidebar.active { max-height: 405px; }
+    .sidebar.active { max-height: 620px; }
 
 .separator {
     width: 100%;
@@ -1180,7 +1180,7 @@ textarea.form-input {
         margin-bottom: 30px;
     }
 
-        .sidebar.active { max-height: 584px; }
+        .sidebar.active { max-height: 680px; }
 
     .sidebar-info { gap: 25px; }
 
@@ -1538,4 +1538,80 @@ textarea.form-input {
     .social-list { justify-content: center; }
 
     .timeline-text { max-width: 700px; }
+}
+
+/* ===== Mode jour / nuit ===== */
+:root[data-theme="light"] {
+    --bg-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 100%) 3%, hsl(0, 0%, 94%) 97%);
+    --bg-gradient-jet: linear-gradient(to bottom right, hsla(0, 0%, 100%, .6) 3%, hsla(0, 0%, 90%, 0) 100%), hsl(0, 0%, 98%);
+    --bg-gradient-yellow1: linear-gradient(to bottom right, hsl(40, 95%, 55%) 0%, hsla(36, 100%, 69%, 0) 50%);
+    --bg-gradient-yellow2: linear-gradient(135deg, hsla(40, 95%, 55%, .25) 0%, hsla(35, 100%, 68%, 0) 59.86%), hsl(0, 0%, 100%);
+    --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 80%) 0%, hsla(0, 0%, 80%, 0) 50%);
+    --text-gradient-yellow: linear-gradient(to right, hsl(38, 90%, 42%), hsl(32, 90%, 38%));
+
+    --jet: hsl(0, 0%, 85%);
+    --onyx: hsl(0, 0%, 93%);
+    --eerie-black1: hsl(0, 0%, 100%);
+    --eerie-black2: hsl(0, 0%, 98%);
+    --smoky-black: hsl(210, 20%, 95%);
+    --white1: hsl(0, 0%, 10%);
+    --white2: hsl(0, 0%, 15%);
+    --orange-yellow-crayola: hsl(38, 92%, 42%);
+    --vegas-gold: hsl(38, 70%, 40%);
+    --light-gray: hsl(0, 0%, 32%);
+    --light-gray70: hsla(0, 0%, 32%, .8);
+
+    --shadow1: -4px 8px 24px hsla(0, 0%, 0%, .08);
+    --shadow2: 0px 16px 30px hsla(0, 0%, 0%, .08);
+    --shadow3: 0px 16px 40px hsla(0, 0%, 0%, .08);
+    --shadow4: 0px 25px 50px hsla(0, 0%, 0%, .06);
+    --shadow5: 0px 24px 80px hsla(0, 0%, 0%, .12);
+}
+:root[data-theme="light"] .navbar { background: hsla(0, 0%, 100%, .88); }
+:root[data-theme="light"] .modal-content { background-color: hsla(0, 0%, 100%, .97); }
+:root[data-theme="light"] ::selection { color: #fff; }
+:root[data-theme="light"] body::-webkit-scrollbar-thumb { background: hsla(0, 0%, 0%, .18); }
+
+.theme-toggle {
+    position: fixed;
+    left: 18px;
+    top: 18px;
+    z-index: 9000;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--jet);
+    background: var(--eerie-black2);
+    color: var(--orange-yellow-crayola);
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: var(--shadow2);
+    transition: transform var(--transition1);
+}
+.theme-toggle:hover { transform: scale(1.08); }
+body, .sidebar, .navbar, .modal-content { transition: background-color .3s ease, color .3s ease; }
+
+
+/* Mobile et tablette : le bouton de thème passe en bas à droite pour ne pas masquer la photo */
+@media (max-width: 1023px) {
+    .theme-toggle { left: auto; top: auto; right: 16px; bottom: 16px; }
+}
+
+/* Bouton CV : texte sur une seule ligne pour ne pas être coupé */
+.sidebar-info-more .form-btn { white-space: nowrap; width: auto; padding-left: 22px; padding-right: 22px; }
+
+@media (min-width: 1250px) {
+    .sidebar { padding-bottom: 30px; }
+}
+
+/* Mobile / tablette : barre latérale repliée, photo et nom entièrement visibles */
+@media (max-width: 1249px) {
+    .sidebar { max-height: 172px; }
+    .sidebar.active { max-height: 680px; }
+}
+@media (min-width: 580px) and (max-width: 1249px) {
+    .sidebar { max-height: 232px; }
 }

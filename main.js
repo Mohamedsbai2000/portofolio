@@ -140,6 +140,20 @@ for(let i = 0; i < navigationLinks.length; i++) {
   const closeModal = document.querySelector(".close-modal");
 
   const projectDescriptions = {
+    "Suivi du CA et des Objectifs (Power BI)": "Dashboard de pilotage du chiffre d'affaires face aux objectifs : comparaison avec l'année précédente (A-1), ratio réalisé/objectif (R/O) et écart par mois et par secteur. Il permet de repérer rapidement les écarts et de piloter l'activité commerciale. Réalisé en contexte professionnel, données anonymisées.",
+
+    "Suivi des Flux-Fonds (Power BI)": "Suivi des commandes de fonds par rapport à l'année précédente : delta, ratio R/O, vision par secteur et par éditeur, et évolution mensuelle (courbes et cascade). Réalisé en contexte professionnel, données anonymisées.",
+
+    "Suivi de la Prospection (Power BI)": "Suivi de la couverture des points de vente par campagne et par canal (périmètre commercial, Fnac, Cultura, GSA), avec indicateurs de prospection et de distribution en valeur. Réalisé en contexte professionnel, données anonymisées.",
+
+    "Suivi des Prios (Power BI)": "Suivi des priorités marketing : objectifs, commandes et quantités par titre, taux de prospection et alertes automatiques (campagne en cours, décrochage, dépassement possible). Réalisé en contexte professionnel, données anonymisées.",
+
+    "Suivi Fnac (Power BI)": "Analyse des commandes par magasin et par titre, répartition des quantités par tranche et poids de chaque magasin. Réalisé en contexte professionnel, données anonymisées.",
+
+    "Suivi des Catalogues (Power BI)": "Suivi de la participation et des commandes par titre et par client, calcul du reste à faire et visualisation géographique des clients. Réalisé en contexte professionnel, données anonymisées.",
+
+    "Commandes Non-Servies (Power BI)": "Rapport de détail des commandes non servies par client et par article, pour identifier les lignes à supprimer et fiabiliser le suivi. Réalisé en contexte professionnel, données anonymisées.",
+
     "Amazon Web Scraper Project (Python)": "Développement d'un Web Scraping en Python (BeautifulSoup, Requests) pour extraire en temps réel le titre et le prix d'un produit spécifique sur Amazon. Le projet inclut l'automatisation des requêtes, le stockage historique des données dans un fichier CSV, et peut être étendu pour l'envoi d'alertes par email en cas de baisse de prix.",
     
     "Analyse Comportementale des Souscriptions Bancaires": "Analyse du comportement des clients d'une institution bancaire pour identifier les facteurs influençant la souscription à un produit. Le projet utilise Pandas et Seaborn pour le nettoyage, la transformation des données, et la création de visualisations (heatmap des souscriptions par jour et mois) pour optimiser les futures campagnes marketing.",
@@ -165,12 +179,13 @@ for(let i = 0; i < navigationLinks.length; i++) {
       const codeLink = item.href; // Récupère l'URL Github stockée dans le href du <a>
       
 
-      modalTitle.textContent = title;
+      document.getElementById("modalTitle").textContent = title;
       modalCategory.textContent = category;
       modalDescription.textContent = projectDescriptions[title] || "Description non disponible.";
       modalImage.src = imgSrc;
       modalImage.alt = title;
       modalLink.href = codeLink;
+      modalLink.style.display = codeLink.endsWith("#") ? "none" : "inline-flex";
 
       modal.style.display = "block";
     });
@@ -185,3 +200,18 @@ for(let i = 0; i < navigationLinks.length; i++) {
       modal.style.display = "none";
     }
   };
+
+
+// Mode jour / nuit
+(function () {
+  const root = document.documentElement;
+  const btn = document.getElementById("themeToggle");
+  const icon = btn.querySelector("ion-icon");
+  const apply = (t) => {
+    root.setAttribute("data-theme", t);
+    icon.setAttribute("name", t === "light" ? "moon-outline" : "sunny-outline");
+    try { localStorage.setItem("theme", t); } catch (e) {}
+  };
+  apply(root.getAttribute("data-theme") || "light");
+  btn.addEventListener("click", () => apply(root.getAttribute("data-theme") === "light" ? "dark" : "light"));
+})();
