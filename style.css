@@ -1648,3 +1648,38 @@ body, .sidebar, .navbar, .modal-content { transition: background-color .3s ease,
 .success-popup-icon { font-size: 56px; line-height: 1; color: var(--orange-yellow-crayola); }
 .success-popup-box h3 { margin: 10px 0 8px; }
 .success-popup-box p { color: var(--light-gray); font-size: 15px; font-weight: 300; line-height: 1.6; }
+
+/* CROIX DE FERMETURE DE LA MODALE PROJET */
+.modal-content .close-modal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--orange-yellow-crayola);
+    background: var(--onyx);
+    border: 1px solid var(--jet);
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 2;
+    transition: var(--transition1);
+}
+.modal-content .close-modal:hover,
+.modal-content .close-modal:focus-visible {
+    background: var(--jet);
+    color: var(--vegas-gold);
+}
+/* Réserve la place de la croix pour que le titre ne passe pas dessous */
+.modal-content #modalTitle {
+    padding-right: 48px;
+}
+@media (max-width: 580px) {
+    .modal-content { width: 88%; margin: 15% auto; padding: 18px; }
+    .modal-content #modalTitle { font-size: 18px; line-height: 1.3; }
+}
