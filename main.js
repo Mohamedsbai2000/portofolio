@@ -231,8 +231,9 @@ for(let i = 0; i < navigationLinks.length; i++) {
       });
       const data = await res.json();
       if (data.success) {
-        status.textContent = "Message envoyé, merci ! Je vous réponds rapidement.";
+        status.textContent = "";
         f.reset();
+        showSuccessPopup();
       } else {
         status.textContent = "Erreur : " + (data.message || "réessayez plus tard.");
         btn.removeAttribute("disabled");
@@ -256,3 +257,20 @@ for(let i = 0; i < navigationLinks.length; i++) {
   ["input", "change", "keyup", "blur"].forEach((ev) => f.addEventListener(ev, check, true));
   setTimeout(check, 500);
 })();
+
+// Popup "Message envoyé"
+const successPopup = document.getElementById("successPopup");
+const successClose = document.getElementById("successClose");
+let successTimer;
+function showSuccessPopup() {
+  successPopup.classList.add("active");
+  clearTimeout(successTimer);
+  successTimer = setTimeout(hideSuccessPopup, 5000);
+}
+function hideSuccessPopup() {
+  successPopup.classList.remove("active");
+  clearTimeout(successTimer);
+}
+successClose.addEventListener("click", hideSuccessPopup);
+successPopup.addEventListener("click", (e) => { if (e.target === successPopup) hideSuccessPopup(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") hideSuccessPopup(); });
